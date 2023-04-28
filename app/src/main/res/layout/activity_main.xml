@@ -16,7 +16,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/navigation"/>
+                app:navGraph="@navigation/navigation" />
         </LinearLayout>
+        <!--        <androidx.appcompat.widget.SwitchCompat-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:id="@+id/switch1"-->
+        <!--            android:text="Light/Dark"-->
+        <!--            android:textSize="24dp"/>-->
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

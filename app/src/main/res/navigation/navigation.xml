@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/cameraFragment"
-        android:name="com.android.example.galleryapp.CameraFragment"
+        android:name="com.android.example.galleryapp.ui.camerafragment.CameraFragment"
         android:label="CameraFragment" />
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.android.example.galleryapp.GalleryFragment"
+        android:name="com.android.example.galleryapp.ui.galleryfragment.GalleryFragment"
         android:label="fragment_gallery"
         tools:layout="@layout/fragment_gallery" >
         <action
