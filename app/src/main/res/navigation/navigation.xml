@@ -17,5 +17,16 @@
         <action
             android:id="@+id/action_galleryFragment_to_cameraFragment"
             app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/action_galleryFragment_to_carrouselFragment"
+            app:destination="@id/carrouselFragment">
+            <argument android:name="photo_List"
+                app:argType="integer[]"/>
+        </action>
     </fragment>
+    <fragment
+        android:id="@+id/carrouselFragment"
+        android:name="com.android.example.galleryapp.ui.carrouselfragment.CarrouselFragment"
+        android:label="fragment_carrousel"
+        tools:layout="@layout/fragment_carrousel" />
 </navigation>

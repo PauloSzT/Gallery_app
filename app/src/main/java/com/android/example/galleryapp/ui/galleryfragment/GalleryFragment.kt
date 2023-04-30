@@ -29,12 +29,21 @@ class GalleryFragment : Fragment() {
     }
 
     val folder = Environment.getExternalStorageDirectory()
-    private val imagesList = File(folder, "/Pictures/CameraX-Image").listFiles()?.map {
-        StorageImage(it.path)
+    private val imagesList = File(folder, "/Pictures/CameraX-Image")
+        .listFiles()?.mapIndexed{ index, item ->
+        StorageImage(pathName = item.path, id = index)
     }
 
+    private val imagesCollection = StorageImageCollection(false, imagesList ?: emptyList())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.selectButton.setOnClickListener{
+            val action = GalleryFragmentDirections.actionGalleryFragmentToCarrouselFragment(
+                imagesCollection.items.filter { it.isSelected }.map { it.id }.toIntArray()
+            )
+            findNavController().navigate(action)
+        }
+
         imagesList?.let { list ->
             val gridLayout = GridLayoutManager(requireContext(), 2)
             gridLayout.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
@@ -48,7 +57,7 @@ class GalleryFragment : Fragment() {
             }
             binding.recycler.layoutManager = gridLayout
             binding.recycler.adapter =
-                ImageAdapter(StorageImageCollection(false, list), requireContext()) { value ->
+                ImageAdapter(imagesCollection, requireContext()) { value ->
                     binding.selectButton.visibility = if (value) View.VISIBLE else View.INVISIBLE
                 }
         }

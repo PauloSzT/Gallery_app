@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
 //        binding.switch1.setOnClickListener {
 //            val sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE)
 //            val editor = sharedPreferences.edit()

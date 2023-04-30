@@ -7,5 +7,6 @@ data class StorageImageCollection(
 
 data class StorageImage(
     val pathName: String,
-    var isSelected: Boolean = false
+    var isSelected: Boolean = false,
+    val id: Int
 )
