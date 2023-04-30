@@ -6,16 +6,12 @@
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
-        android:padding="10dp" />
+        android:layout_weight="2"
+        android:clickable="true"
+        android:contentDescription="@string/photo"
+        android:scaleType="centerCrop"
+        android:focusable="true" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:padding="10dp" />
 </LinearLayout>

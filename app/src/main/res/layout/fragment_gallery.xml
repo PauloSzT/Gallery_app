@@ -1,28 +1,75 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context="com.android.example.galleryapp.ui.galleryfragment.GalleryFragment">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <GridView
-        android:id="@+id/grid_view"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:horizontalSpacing="8dp"
-        android:numColumns="1"
-        android:padding="8dp"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="8dp" />
+        android:orientation="vertical"
+        tools:context="com.android.example.galleryapp.ui.galleryfragment.GalleryFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/camera_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="buttonCamera" />
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/camera_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/camera" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/select_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/select" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</layout>
+
+
+    <!--    <GridView-->
+    <!--        android:id="@+id/grid_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:clipToPadding="false"-->
+    <!--        android:gravity="center"-->
+    <!--        android:horizontalSpacing="8dp"-->
+    <!--        android:numColumns="1"-->
+    <!--        android:padding="8dp"-->
+    <!--        android:scrollbarStyle="outsideOverlay"-->
+    <!--        android:scrollbars="vertical"-->
+    <!--        android:stretchMode="columnWidth"-->
+    <!--        android:verticalSpacing="8dp" />-->

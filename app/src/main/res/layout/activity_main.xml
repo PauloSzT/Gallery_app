@@ -18,11 +18,11 @@
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/navigation" />
         </LinearLayout>
-        <!--        <androidx.appcompat.widget.SwitchCompat-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="40dp"-->
-        <!--            android:id="@+id/switch1"-->
-        <!--            android:text="Light/Dark"-->
-        <!--            android:textSize="24dp"/>-->
     </androidx.drawerlayout.widget.DrawerLayout>
+<!--    <androidx.appcompat.widget.SwitchCompat-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:id="@+id/switch1"-->
+<!--        android:text="Light/Dark"-->
+<!--        android:textSize="24dp"/>-->
 </layout>

@@ -19,33 +19,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+//        binding.switch1.setOnClickListener {
+//            val sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE)
+//            val editor = sharedPreferences.edit()
+//            val nightMode = sharedPreferences.getBoolean("night", false)
+//            if (nightMode) {
+//                binding.switch1.isChecked = true
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//            }
+//            binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
+//                if (!isChecked) {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//                    editor.putBoolean("night", false)
+//                    editor.apply()
+//                } else {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//                    editor.putBoolean("night", true)
+//                    editor.apply()
+//                }
+//            }
+//        }
         setContentView(binding.root)
 
-        // Agregar el Fragment al contenedor principal
         supportFragmentManager.beginTransaction()
             .replace(R.id.myNavHostFragment, GalleryFragment())
             .commit()
 
-//        val switch = findViewById<SwitchCompat>(R.id.switch1)
-//        val sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//        val nightMode = sharedPreferences.getBoolean("night", false)
-//
-//        if(nightMode){
-//            switch.isChecked = true
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//        }
-//
-//        switch.setOnCheckedChangeListener { buttonView, isChecked ->
-//            if(!isChecked){
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//                editor.putBoolean("night", false)
-//                editor.apply()
-//            } else{
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//                editor.putBoolean("night", true)
-//                editor.apply()
-//            }
-//        }
     }
 }

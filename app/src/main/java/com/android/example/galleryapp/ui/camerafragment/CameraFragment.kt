@@ -25,7 +25,6 @@ import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-
 class CameraFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentCameraBinding
@@ -92,7 +91,6 @@ class CameraFragment : Fragment() {
         )
     }
 
-
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
@@ -134,7 +132,7 @@ class CameraFragment : Fragment() {
     companion object {
         private const val TAG = "CameraXApp"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-        private const val REQUEST_CODE_PERMISSIONS = 10
+        private const val REQUEST_CODE_PERMISSIONS = 100
         private val REQUIRED_PERMISSIONS =
             mutableListOf (
                 Manifest.permission.CAMERA,
