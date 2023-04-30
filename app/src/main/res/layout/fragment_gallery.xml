@@ -14,9 +14,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,23 +51,9 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
-                    android:text="@string/select" />
+                    android:text="@string/select"
+                    android:visibility="invisible" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
 </layout>
-
-
-    <!--    <GridView-->
-    <!--        android:id="@+id/grid_view"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:clipToPadding="false"-->
-    <!--        android:gravity="center"-->
-    <!--        android:horizontalSpacing="8dp"-->
-    <!--        android:numColumns="1"-->
-    <!--        android:padding="8dp"-->
-    <!--        android:scrollbarStyle="outsideOverlay"-->
-    <!--        android:scrollbars="vertical"-->
-    <!--        android:stretchMode="columnWidth"-->
-    <!--        android:verticalSpacing="8dp" />-->

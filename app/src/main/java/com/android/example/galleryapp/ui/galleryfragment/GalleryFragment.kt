@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.example.gallery_app.databinding.FragmentGalleryBinding
-import com.android.example.galleryapp.models.StorageImages
+import com.android.example.galleryapp.models.StorageImage
+import com.android.example.galleryapp.models.StorageImageCollection
 import java.io.File
 
 
@@ -29,7 +30,7 @@ class GalleryFragment : Fragment() {
 
     val folder = Environment.getExternalStorageDirectory()
     private val imagesList = File(folder, "/Pictures/CameraX-Image").listFiles()?.map {
-        StorageImages(it.path)
+        StorageImage(it.path)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +47,10 @@ class GalleryFragment : Fragment() {
                 }
             }
             binding.recycler.layoutManager = gridLayout
-            binding.recycler.adapter = ImageAdapter(list, requireContext())
+            binding.recycler.adapter =
+                ImageAdapter(StorageImageCollection(false, list), requireContext()) { value ->
+                    binding.selectButton.visibility = if (value) View.VISIBLE else View.INVISIBLE
+                }
         }
     }
 }

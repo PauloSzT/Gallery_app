@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="150dp"
+    android:layout_weight="2">
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:clickable="true"
         android:contentDescription="@string/photo"
-        android:scaleType="centerCrop"
-        android:focusable="true" />
+        android:focusable="true"
+        android:scaleType="centerCrop" />
 
-</LinearLayout>
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:enabled="false"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
+</FrameLayout>
