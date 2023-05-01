@@ -2,11 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.example.galleryapp.CategoryFragment">
+    style="@style/Theme.Gallery_App_Backgrounds"
+    tools:context="com.android.example.galleryapp.ui.carrouselfragment.CarrouselFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/list_images" />
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:layout_height="wrap_content"/>
+
 </FrameLayout>
