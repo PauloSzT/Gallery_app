@@ -13,7 +13,6 @@ import com.android.example.galleryapp.models.StorageImage
 import com.android.example.galleryapp.models.StorageImageCollection
 import java.io.File
 
-
 class GalleryFragment : Fragment() {
     private lateinit var binding: FragmentGalleryBinding
     override fun onCreateView(
@@ -28,19 +27,20 @@ class GalleryFragment : Fragment() {
         return binding.root
     }
 
-    val folder = Environment.getExternalStorageDirectory()
-    private val imagesList = File(folder, "/Pictures/CameraX-Image")
-        .listFiles()?.mapIndexed{ index, item ->
-        StorageImage(pathName = item.path, id = index)
-    }
+    private val folder = Environment.getExternalStorageDirectory()
+    private val imagesList = File(folder, CHILD_ROUTE)
+        .listFiles()?.mapIndexed { index, item ->
+            StorageImage(pathName = item.path, id = index)
+        }
 
     private val imagesCollection = StorageImageCollection(false, imagesList ?: emptyList())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.selectButton.setOnClickListener{
-            val action = GalleryFragmentDirections.actionGalleryFragmentToCarrouselFragment(
+        binding.selectButton.setOnClickListener {
+            val selectedItems =
                 imagesCollection.items.filter { it.isSelected }.map { it.id }.toIntArray()
-            )
+            val action =
+                GalleryFragmentDirections.actionGalleryFragmentToCarrouselFragment(selectedItems)
             findNavController().navigate(action)
         }
 
@@ -61,5 +61,9 @@ class GalleryFragment : Fragment() {
                     binding.selectButton.visibility = if (value) View.VISIBLE else View.INVISIBLE
                 }
         }
+    }
+
+    companion object {
+        private const val CHILD_ROUTE = "/Pictures/CameraX-Image"
     }
 }

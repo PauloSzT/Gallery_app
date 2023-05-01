@@ -13,20 +13,26 @@
         android:id="@+id/galleryFragment"
         android:name="com.android.example.galleryapp.ui.galleryfragment.GalleryFragment"
         android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" >
+        tools:layout="@layout/fragment_gallery">
         <action
             android:id="@+id/action_galleryFragment_to_cameraFragment"
             app:destination="@id/cameraFragment" />
         <action
             android:id="@+id/action_galleryFragment_to_carrouselFragment"
             app:destination="@id/carrouselFragment">
-            <argument android:name="photo_List"
-                app:argType="integer[]"/>
+            <argument
+                android:name="photoList"
+                app:argType="integer[]" />
         </action>
     </fragment>
     <fragment
         android:id="@+id/carrouselFragment"
         android:name="com.android.example.galleryapp.ui.carrouselfragment.CarrouselFragment"
         android:label="fragment_carrousel"
-        tools:layout="@layout/fragment_carrousel" />
+        tools:layout="@layout/fragment_carrousel">
+        <argument
+            android:name="photoList"
+            app:argType="integer[]"
+            app:nullable="true" />
+    </fragment>
 </navigation>

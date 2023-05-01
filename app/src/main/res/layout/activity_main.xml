@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/myNavHostFragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
@@ -19,10 +19,4 @@
                 app:navGraph="@navigation/navigation" />
         </LinearLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
-<!--    <androidx.appcompat.widget.SwitchCompat-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:id="@+id/switch1"-->
-<!--        android:text="Light/Dark"-->
-<!--        android:textSize="24dp"/>-->
 </layout>

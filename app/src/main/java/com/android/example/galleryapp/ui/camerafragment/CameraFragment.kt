@@ -34,7 +34,7 @@ class CameraFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         viewBinding = FragmentCameraBinding.inflate(
             inflater, container, false
@@ -60,14 +60,13 @@ class CameraFragment : Fragment() {
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
-
         val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
             .format(System.currentTimeMillis())
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
+                put(MediaStore.Images.Media.RELATIVE_PATH, CHILD_ROUTE)
             }
         }
 
@@ -103,7 +102,6 @@ class CameraFragment : Fragment() {
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
-            // Preview
             val preview = Preview.Builder()
                 .build()
                 .also {
@@ -137,20 +135,6 @@ class CameraFragment : Fragment() {
         cameraExecutor.shutdown()
     }
 
-    companion object {
-        private const val TAG = "CameraXApp"
-        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-        private const val REQUEST_CODE_PERMISSIONS = 100
-        private val REQUIRED_PERMISSIONS =
-            mutableListOf(
-                Manifest.permission.CAMERA,
-            ).apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    add(Manifest.permission.READ_MEDIA_IMAGES)
-                }
-            }.toTypedArray()
-    }
-
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
         IntArray
@@ -167,5 +151,20 @@ class CameraFragment : Fragment() {
                 requireActivity().finish()
             }
         }
+    }
+
+    companion object {
+        private const val CHILD_ROUTE = "Pictures/CameraX-Image"
+        private const val TAG = "CameraXApp"
+        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+        private const val REQUEST_CODE_PERMISSIONS = 100
+        private val REQUIRED_PERMISSIONS =
+            mutableListOf(
+                Manifest.permission.CAMERA,
+            ).apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    add(Manifest.permission.READ_MEDIA_IMAGES)
+                }
+            }.toTypedArray()
     }
 }
