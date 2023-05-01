@@ -1,7 +1,9 @@
 package com.android.example.galleryapp.ui.galleryfragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,9 +35,13 @@ class GalleryFragment : Fragment() {
             StorageImage(pathName = item.path, id = index)
         }
 
-    private val imagesCollection = StorageImageCollection(false, imagesList ?: emptyList())
+    private var imagesCollection = StorageImageCollection(false, imagesList ?: emptyList())
+    private lateinit var adapter: ImageAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = ImageAdapter(imagesCollection, requireContext()) { value ->
+            binding.selectButton.visibility = if (value) View.VISIBLE else View.INVISIBLE
+        }
         binding.selectButton.setOnClickListener {
             val selectedItems =
                 imagesCollection.items.filter { it.isSelected }.map { it.id }.toIntArray()
@@ -56,10 +62,22 @@ class GalleryFragment : Fragment() {
                 }
             }
             binding.recycler.layoutManager = gridLayout
-            binding.recycler.adapter =
-                ImageAdapter(imagesCollection, requireContext()) { value ->
-                    binding.selectButton.visibility = if (value) View.VISIBLE else View.INVISIBLE
-                }
+
+            binding.recycler.adapter = adapter
+
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        super.onResume()
+        val newImagesList = File(folder, CHILD_ROUTE)
+            .listFiles()?.mapIndexed { index, item ->
+                StorageImage(pathName = item.path, id = index)
+            }
+        if(newImagesList != imagesList){
+            adapter.data = StorageImageCollection(false, newImagesList ?: emptyList())
+            adapter.notifyDataSetChanged()
         }
     }
 

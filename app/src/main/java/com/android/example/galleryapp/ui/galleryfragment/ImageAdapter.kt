@@ -12,7 +12,7 @@ import com.android.example.gallery_app.databinding.ItemSmallImageBinding
 import com.android.example.galleryapp.models.StorageImageCollection
 
 class ImageAdapter(
-    private val data: StorageImageCollection,
+    var data: StorageImageCollection,
     private val context: Context,
     private var callBack: (Boolean) -> Unit
 ) :
