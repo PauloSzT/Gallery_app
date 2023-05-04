@@ -3,7 +3,6 @@ package com.android.example.galleryapp.ui.galleryfragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +49,7 @@ class GalleryFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        imagesList?.let { list ->
+        imagesList?.let {
             val gridLayout = GridLayoutManager(requireContext(), 2)
             gridLayout.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
@@ -64,7 +63,6 @@ class GalleryFragment : Fragment() {
             binding.recycler.layoutManager = gridLayout
 
             binding.recycler.adapter = adapter
-
         }
     }
 

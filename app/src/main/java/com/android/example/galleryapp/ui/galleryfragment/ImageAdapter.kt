@@ -32,7 +32,7 @@ class ImageAdapter(
         return data.items.size
     }
 
-    inner class ViewHolder(val binding: ItemSmallImageBinding) :
+    inner class ViewHolder(private val binding: ItemSmallImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private val image = binding.imageView1
 
@@ -69,17 +69,5 @@ class ImageAdapter(
             }
 
         }
-    }
-
-    companion object {
-        private const val ZERO = 0
-        private const val UNIT = 1
-        private const val DOUBLE = 2
-        private const val INDEX_ZERO = 0
-        private const val INDEX_ONE = 1
-        private const val INDEX_TWO = 2
-        private const val DIV_FACTOR = 3
-        private const val TIMES_FACTOR = 2
-        private const val VIEW_TYPES = 2
     }
 }
